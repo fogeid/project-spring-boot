@@ -1,0 +1,28 @@
+package io.github.fogeid.curso.services;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.Optional;
+
+import io.github.fogeid.curso.entities.User;
+import io.github.fogeid.curso.repositories.UserRepository;
+
+@Service
+public class UserService {
+	
+	@Autowired
+	private UserRepository repository;
+	
+	public List<User> findAll() {
+		return repository.findAll();
+	}
+	
+	public User findById(Long id) {
+		Optional<User> obj = repository.findById(id);
+		
+		return obj.get();
+	}
+}
